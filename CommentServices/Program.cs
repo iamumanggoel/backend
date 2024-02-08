@@ -87,6 +87,12 @@ var app = builder.Build();
     app.UseSwaggerUI();
 //}
 
+
+using (var scope =
+  app.Services.CreateScope())
+using (var context = scope.ServiceProvider.GetService<CommentDbContext>())
+    context.Database.Migrate();
+
 app.UseHttpsRedirection();
 
 app.UseCors("AllowAny");

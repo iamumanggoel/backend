@@ -89,6 +89,11 @@ var app = builder.Build();
     app.UseSwaggerUI();
 //}
 
+using (var scope =
+  app.Services.CreateScope())
+using (var context = scope.ServiceProvider.GetService<BlogDbContext>())
+    context.Database.Migrate();
+
 app.UseHttpsRedirection();
 
 app.UseCors("AllowAny");

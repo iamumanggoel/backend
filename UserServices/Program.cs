@@ -93,6 +93,11 @@ var app = builder.Build();
     app.UseSwaggerUI();
 //}
 
+using (var scope =
+  app.Services.CreateScope())
+using (var context = scope.ServiceProvider.GetService<UserDbContext>())
+    context.Database.Migrate();
+
 app.UseHttpsRedirection();
 
 
