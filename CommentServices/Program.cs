@@ -88,10 +88,10 @@ var app = builder.Build();
 //}
 
 
-using (var scope =
-  app.Services.CreateScope())
-using (var context = scope.ServiceProvider.GetService<CommentDbContext>())
-    context.Database.Migrate();
+//using (var scope =
+//  app.Services.CreateScope())
+//using (var context = scope.ServiceProvider.GetService<CommentDbContext>())
+//    context.Database.Migrate();
 
 app.UseHttpsRedirection();
 
